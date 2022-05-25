@@ -18,6 +18,9 @@
                 {% else %}
                     <h2>{{task.task_text}} Deadline - {{task.deadline}} <h2>
                 {% endif %}
+                <a href="complete/{{task.id}}/">Complete</a>
+                <a href="edit/{{task.id}}/">Edit</a>
+                <a href="delete/{{task.id}}/">Delete</a>
             </li>
         {% endfor %}
     </ul>

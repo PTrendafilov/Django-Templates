@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="task" method="POST">
+        {% csrf_token %}
+        <input type="text" name="task_text" value="{{task.task_text}}"><br>
+        <input type="date"  id="date"name="deadline" value="{{task.deadline}}"><br>
+        {% if task.is_finished %}
+            The task is unfinished <input type="radio" name="is_finished" value="False"><br>
+            The task is finished <input type="radio" name="is_finished" value="True" checked><br>
+        {%else%}
+            The task is unfinished <input type="radio" name="is_finished" value="False" checked><br>
+            The task is finished <input type="radio" name="is_finished" value="True"><br>
+        {%endif%}
+        <input type="submit">
+    </form>
+    <script>
+        const months = {
+            Jan: '01',
+            Feb: '02',
+            Mar: '03',
+            Apr: '04',
+            May: '05',
+            Jun: '06',
+            Jul: '07',
+            Aug: '08',
+            Sep: '09',
+            Oct: '10',
+            Nov: '11',
+            Dec: '12',
+        }
+        let date = '{{task.deadline}}';
+        console.log(date);
+        date = date.split(' ');
+        console.log(date);
+        let year = date[2];
+        let day = '';
+        for (let i = 0; i < date[1].length - 1; i++) {
+            day += date[1][i];
+        }
+        console.log(day);
+        let month = months[date[0]]
+        console.log(month);
+        date = year+'-'+month+'-'+day;
+        console.log(date);
+        document.getElementById("date").defaultValue = date;
+    </script>
+</body>
+
+</html>
