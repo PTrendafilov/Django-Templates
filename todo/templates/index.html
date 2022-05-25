@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TODO List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {% if task.is_finished %}
+                    <s>
+                        <h2>{{task.task_text}} Deadline - {{task.deadline}} <h2>
+                    </s>
+                {% else %}
+                    <h2>{{task.task_text}} Deadline - {{task.deadline}} <h2>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
